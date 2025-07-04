@@ -1,0 +1,57 @@
+### Variables
+# @baseUrl = http://Stagin-Stagi-OvJEPS9gXhin-433250551.us-east-1.elb.amazonaws.com
+@baseUrl = http://0.0.0.0:8080
+@authToken = {{login.response.body.accessToken}}
+
+### Health Check
+GET {{baseUrl}}/ping
+
+### Register New User - Contractor
+POST {{baseUrl}}/register
+Content-Type: application/json
+
+{
+    "email": "m1+1@wilshire.io",
+    "password": "Password123!",
+    "role": "contractor",
+    "fullName": "Mo Due",
+    "businessName": "John's Construction",
+    "trade": "Plumbing",
+    "yearsInBusiness": 5
+}
+
+### Register New User - Owner
+POST {{baseUrl}}/register
+Content-Type: application/json
+
+{
+    "email": "m+6@wilshire.io",
+    "password": "Password123!",
+    "role": "owner"
+}
+
+### Login
+# @name login
+POST {{baseUrl}}/login
+Content-Type: application/json
+
+{
+    "email": "m@wilshire.io",
+    "password": "Password123!"
+}
+
+### Get User Profile
+GET {{baseUrl}}/profile
+Authorization: Bearer {{authToken}}
+
+### Update User Profile
+PUT {{baseUrl}}/profile
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+    "fullName": "John Smith",
+    "businessName": "Smith's Construction",
+    "trade": "General Contractor",
+    "yearsInBusiness": 1
+}

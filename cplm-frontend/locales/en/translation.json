@@ -1,0 +1,33 @@
+{
+    "signup.password_length": "Password must be at least 8 characters",
+    "signup.password_uppercase": "Password must contain at least one uppercase letter",
+    "signup.password_lowercase": "Password must contain at least one lowercase letter",
+    "signup.password_number": "Password must contain at least one number",
+    "signup.password_special": "Password must contain at least one special character (!@#$%^&*)",
+
+    "header.my_account": "My Account",
+    "header.home": "Home",
+    "header.about": "About",
+    "header.services": "Services",
+    "header.contact": "Contact Us",
+
+    "landing.title": "CP Support in Seconds",
+    "landing.description": "Connecting you with the specialists and devices that you need for lifelong care.",
+    "landing.services": "Services",
+    "landing.connecting": "Connecting you with the specialists and devices that you need for lifelong care.",
+    "landing.signup": "Sign Up",
+    "landing.login": "Login",
+    "landing.logout": "Logout",
+    "landing.specialists": "Specialists",
+    "landing.devices": "Devices",
+    "landing.find_care": "Find Care",
+    "landing.find_assistive_devices": "Find Assistive Devices",
+    "landing.find_care_search": "Search for Specialists in your area based on your location, your needs, or your specific type of CP.",
+    "landing.find_devices_search": "Browse through hundreds of assistive devices to find the one that is perfect for your needs.",
+    "landing.empowering": "Empowering Access, Enhancing Abilities",
+    "landing.empowering_description": "Giving you the freedom to choose the care that you want, when you want it. Select from hundreds of specialists in your area and begin your path to new possibilities.",
+    
+    "footer.resources": "Resources"
+
+
+}

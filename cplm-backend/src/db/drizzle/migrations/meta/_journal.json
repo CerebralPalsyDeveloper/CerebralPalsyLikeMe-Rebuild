@@ -1,0 +1,48 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1739578816660,
+      "tag": "0000_create_users_table",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1739703735538,
+      "tag": "0001_create_projects_feature",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1739711108647,
+      "tag": "0002_change_years_in_business_to_varchar",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1739741762874,
+      "tag": "0003_add_milestone_change_requests",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1739880750340,
+      "tag": "0004_add_payment_fields",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1740266360983,
+      "tag": "0005_check_project_amount_field_precision",
+      "breakpoints": true
+    }
+  ]
+}

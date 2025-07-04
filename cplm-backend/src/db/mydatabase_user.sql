@@ -1,0 +1,54 @@
+-- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
+--
+-- Host: 137.184.57.228    Database: mydatabase
+-- ------------------------------------------------------
+-- Server version	8.0.40-0ubuntu0.24.04.1
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `user`
+--
+
+DROP TABLE IF EXISTS `user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `user` (
+  `UserID` int NOT NULL AUTO_INCREMENT,
+  `Email` varchar(255) NOT NULL,
+  `Name` varchar(255) NOT NULL,
+  `PasswordHash` varchar(255) NOT NULL,
+  PRIMARY KEY (`UserID`),
+  UNIQUE KEY `ix_user_Email` (`Email`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user`
+--
+
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (1,'jsmith33@stedwards.edu','Jaret','scrypt:32768:8:1$pQrwEmgAbkt4zKVp$72ffa57968bb3311150d6dd1f54fac9db7c9363d781b64a90973f158caf43844ce3edbf7d0447b32ce69360552973dd1c0c25529db0baefe4530ff2f3c205fc4'),(2,'test@test.com','Test','scrypt:32768:8:1$S9LURsk2lFHV2lbk$ae7b33b203c14462b3a06f5ded7c4de2f93711ff40a21b39c6cbb00f525bca7c9303d28241766fce6b40297ee2c8cab82d951f5e2e512e75f9d2f879e5167ef8'),(3,'user@user.com','User','scrypt:32768:8:1$ujQMnNix5S0w50uy$b5bd13cd4635c33e57377bffcc54c03dbf5bdc54a96de0fbcfb67645084b47636bf87714ce39ee8325b0448aef5add003d12bdad7c614e8feb3d04548dec2892'),(4,'user@test.com','TestUser','scrypt:32768:8:1$mtEoJlb8PEYzF0hX$4ff507daf8a947165b90a8ee3e98aeae5be35237e2d3bf701f89ab4fd41e50230646ba24471bf9367d2551d5e039550a9bf77733edb794a12fa950df447c8408'),(5,'test4@test.com','testuser4','scrypt:32768:8:1$UrSBMLEopuZoNKbW$7f70ef8ac1b8f498ab1e62bd8ba1a546ff91042f8ce5624c24ea8ec5597aeace69acb542376ab77c65d08a2edb04c33ae28df4ba512334a3b51577376ceb3adc'),(6,'mcastilf@stedwards.edu','magdalena','scrypt:32768:8:1$Mg7KvPwYPxKdvYLU$13a7d8e885e1201680c8dcb358d5086f4649ec73c6e7d034074292b82cf392e22eaa5ab00d1a1de6982105f71f6b01fb2d4aff31d363183c04e626f0039c4720'),(7,'cmaggie13@yahoo.com','magdalena','scrypt:32768:8:1$kyaT4IXciug6WJQ4$3edbf802f6f64f0e7a76978c2a0412a6c267fb92054dd4190072cf8c356c3d449ace9e12b7eddc53fa7fcf261bdafa4495fd3d7bff74e75331c34ac2c486d200');
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2024-12-01 19:39:05

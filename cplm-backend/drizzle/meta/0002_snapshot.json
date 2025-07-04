@@ -1,0 +1,167 @@
+{
+  "id": "2d6eed33-28d3-4dba-ac63-b0a796014d23",
+  "prevId": "74537d0c-3466-4b8f-a817-a85e25676526",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.cp_user_info": {
+      "name": "cp_user_info",
+      "schema": "",
+      "columns": {
+        "user_id": {
+          "name": "user_id",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "can_walk": {
+          "name": "can_walk",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "hand_trouble": {
+          "name": "hand_trouble",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "cp_type": {
+          "name": "cp_type",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "can_talk": {
+          "name": "can_talk",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "can_see": {
+          "name": "can_see",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "can_hear": {
+          "name": "can_hear",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "need_assistance": {
+          "name": "need_assistance",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "address": {
+          "name": "address",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "cp_user_info_user_id_users_id_fk": {
+          "name": "cp_user_info_user_id_users_id_fk",
+          "tableFrom": "cp_user_info",
+          "tableTo": "users",
+          "columnsFrom": [
+            "user_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.users": {
+      "name": "users",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "varchar",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "email": {
+          "name": "email",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "full_name": {
+          "name": "full_name",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "users_email_unique": {
+          "name": "users_email_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "email"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

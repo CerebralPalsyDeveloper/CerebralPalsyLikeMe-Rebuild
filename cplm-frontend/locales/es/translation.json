@@ -1,0 +1,30 @@
+{
+    "signup.password_length": "La contraseña debe tener al menos 8 caracteres",
+    "signup.password_uppercase": "La contraseña debe tener al menos una letra mayúscula",
+    "signup.password_lowercase": "La contraseña debe tener al menos una letra minúscula",
+    "signup.password_number": "La contraseña debe tener al menos un número",
+    "signup.password_special": "La contraseña debe tener al menos un carácter especial (!@#$%^&*)",
+
+    "header.my_account": "Mi Cuenta",
+    "header.home": "Inicio",
+    "header.about": "Sobre Nosotros",
+    "header.services": "Servicios",
+    "header.contact": "Contacto",
+
+    "landing.title": "Apoyo de parálisis cerebral en segundos",
+    "landing.description": "Conectando a personas con los especialistas y dispositivos que necesitan para el cuidado a largo plazo.",
+    "landing.services": "Servicios",
+    "landing.connecting": "Conectando a personas con los especialistas y dispositivos que necesitan para el cuidado a largo plazo.",
+    "landing.signup": "Registrarse",
+    "landing.login": "Iniciar sesión",
+    "landing.logout": "Cerrar sesión",
+    "landing.specialists": "Especialistas",
+    "landing.devices": "Dispositivos",
+    "landing.find_care": "Encontrar Cuidado",
+    "landing.find_assistive_devices": "Encontrar Dispositivos Asistenciales",
+    "landing.find_care_search": "Busca especialistas en tu área basado en tu ubicación, necesidades o tipo específico de parálisis cerebral.",
+    "landing.find_devices_search": "Explora cientos de dispositivos asistenciales para encontrar el que mejor se adapte a tus necesidades.",
+    "landing.empowering": "Empoderando Acceso, Mejorando Habilidades",
+    "landing.empowering_description": "Dando libertad para elegir el cuidado que quieres, cuando lo quieres. Selecciona entre cientos de especialistas en tu área y comienza tu camino hacia nuevas posibilidades.",
+    "footer.resources": "Recursos"
+}
