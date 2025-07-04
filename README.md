@@ -1,10 +1,10 @@
-# CP Like Me
+# Cerebral Palsy Like Me - Rebuild (Senior Project)
 
 A comprehensive web application designed to help individuals with cerebral palsy find specialists and assistive devices. The platform provides an intuitive interface for searching healthcare professionals and discovering assistive technology solutions tailored to specific needs.
 
 ## 🎯 Project Overview
 
-CP Like Me is a full-stack web application that connects individuals with cerebral palsy to:
+Cerebral Palsy Like Me is a full-stack web application that connects individuals with cerebral palsy to:
 - **Healthcare Specialists**: Find doctors, therapists, and other healthcare professionals
 - **Assistive Devices**: Discover and learn about assistive technology solutions
 - **Personalized Recommendations**: Get suggestions based on individual CP characteristics
