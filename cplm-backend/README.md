@@ -1,4 +1,4 @@
-# CP Like Me - Backend
+# Cerebral Palsy Like Me - Backend
 
 A Fastify-based REST API backend for the CP Like Me application, designed to help individuals with cerebral palsy find specialists and assistive devices.
 
@@ -24,7 +24,7 @@ Before running this application, make sure you have the following installed:
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/CerebralPalsyLikeMe/monorepo.git
+   git clone https://github.com/CerebralPalsyLikeMe-Rebuild/monorepo.git
    cd monorepo/cplm-backend
    ```
 
