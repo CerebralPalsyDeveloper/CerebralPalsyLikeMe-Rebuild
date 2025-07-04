@@ -1,6 +1,6 @@
 # Cerebral Palsy Like Me - Backend
 
-A Fastify-based REST API backend for the CP Like Me application, designed to help individuals with cerebral palsy find specialists and assistive devices.
+A Fastify-based REST API backend for the Cerebral Palsy Like Me application, designed to help individuals with cerebral palsy find specialists and assistive devices.
 
 ## 🚀 Features
 
