@@ -1,4 +1,4 @@
-# Cerebral Palsy Like Me - Backend
+# Cerebral Palsy Like Me - Rebuild - Backend
 
 A Fastify-based REST API backend for the Cerebral Palsy Like Me application, designed to help individuals with cerebral palsy find specialists and assistive devices.
 
