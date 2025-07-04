@@ -33,7 +33,7 @@ CP Like Me/
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/CerebralPalsyLikeMe/monorepo.git
+   git clone https://github.com/CerebralPalsyLikeMe-Rebuild/monorepo.git
    cd monorepo
    ```
 
