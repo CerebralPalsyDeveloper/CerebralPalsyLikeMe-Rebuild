@@ -4,7 +4,7 @@ import { ValidationError } from "@/components/ui/ValidationError";
 import { useLoginMutation } from "@/services/authApi";
 import { useAppDispatch } from "@/store/hooks";
 import { setAuth } from "@/store/slices/authSlice";
-import { handleApiCall } from "@/utils/handleApiCall";
+
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Language, Visibility, VisibilityOff } from "@mui/icons-material";
 import {
@@ -85,46 +85,38 @@ export default function Login() {
   const onSubmit = async (data: any) => {
     console.log('Starting login with data:', data);
     
-    handleApiCall(
-      login,
-      [data],
-      (userData) => {
-        console.log('Login successful, userData received:', userData);
-        console.log('userData type:', typeof userData);
-        console.log('userData keys:', Object.keys(userData || {}));
-        console.log('Access token:', userData?.accessToken);
-        console.log('Token length:', userData?.accessToken?.length);
-        
-        if (!userData?.accessToken) {
-          console.error('No access token received from server');
-          console.error('Full userData object:', JSON.stringify(userData, null, 2));
-          toast.error("Login failed: No token received");
-          return;
-        }
-        
-        // Store token directly in localStorage
-        localStorage.setItem('token', userData.accessToken);
-        localStorage.setItem('refreshToken', userData.refreshToken);
-        
-        console.log('Token stored in localStorage:', localStorage.getItem('token'));
-        console.log('Token stored length:', localStorage.getItem('token')?.length);
-        
-        toast.success("Logged in successfully!");
-        dispatch(
-          setAuth({
-            token: userData.accessToken,
-            userType: "user",
-            isAuthenticated: true
-          })
-        );
-        router.push("/");
-      },
-      (error) => {
-        console.error('Login error:', error);
-        console.error('Error details:', JSON.stringify(error, null, 2));
-        toast.error(error.message || "Login failed.");
+    try {
+      const loginResult = await login(data).unwrap();
+      console.log('Login successful:', loginResult);
+      
+      if (!loginResult?.accessToken) {
+        console.error('No access token received from server');
+        console.error('Full loginResult object:', JSON.stringify(loginResult, null, 2));
+        toast.error("Login failed: No token received");
+        return;
       }
-    );
+      
+      // Store token directly in localStorage
+      localStorage.setItem('token', loginResult.accessToken);
+      localStorage.setItem('refreshToken', loginResult.refreshToken);
+      
+      console.log('Token stored in localStorage:', localStorage.getItem('token'));
+      console.log('Token stored length:', localStorage.getItem('token')?.length);
+      
+      toast.success("Logged in successfully!");
+      dispatch(
+        setAuth({
+          token: loginResult.accessToken,
+          userType: "user",
+          isAuthenticated: true
+        })
+      );
+      router.push("/");
+    } catch (error: any) {
+      console.error('Login error:', error);
+      console.error('Error details:', JSON.stringify(error, null, 2));
+      toast.error(error?.data?.message || error?.message || "Login failed.");
+    }
   };
 
   // Inline styles for green card and centering

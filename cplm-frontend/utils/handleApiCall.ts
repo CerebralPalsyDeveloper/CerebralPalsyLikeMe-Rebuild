@@ -2,7 +2,7 @@ import { ApiError } from "../types/auth";
 import { toast } from "react-toastify";
 
 // Ensure the baseUrl has a trailing slash
-export const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8080';
+export const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080';
 
 type ApiCall = (...args: any[]) => Promise<any>;
 

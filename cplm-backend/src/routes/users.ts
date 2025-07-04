@@ -4,6 +4,7 @@ import { users, CPUserInfo } from '../db/drizzle/schema';
 import { eq } from 'drizzle-orm';
 import { FastifyPluginAsyncTypebox } from '@fastify/type-provider-typebox';
 import { DB } from '../db/db';
+import bcrypt from 'bcrypt';
 
 // Extend FastifyInstance type
 declare module 'fastify' {
@@ -59,12 +60,17 @@ const userRoutes: FastifyPluginAsyncTypebox = async (app) => {
           return reply.conflict('User already exists');
         }
 
+        // Hash the password
+        const saltRounds = 10;
+        const hashedPassword = await bcrypt.hash(password, saltRounds);
+
         // Create user in database
         const [newUser] = await app.db
           .insert(users)
           .values({
             id: crypto.randomUUID(),
             email,
+            password: hashedPassword,
             fullName: `${firstName} ${lastName}`
           })
           .returning();
@@ -107,10 +113,13 @@ const userRoutes: FastifyPluginAsyncTypebox = async (app) => {
           return reply.unauthorized('Invalid credentials');
         }
 
-        // TODO: Add proper password hashing and verification
-        // For now, just return success and generate a JWT token
+        // Verify password
+        const isPasswordValid = await bcrypt.compare(password, user.password);
+        if (!isPasswordValid) {
+          return reply.unauthorized('Invalid credentials');
+        }
         
-        // Generate a simple JWT token (in production, use a proper JWT library)
+        // Generate JWT token
         const jwt = require('jsonwebtoken');
         const secret = process.env.JWT_SECRET || 'your-secret-key';
         

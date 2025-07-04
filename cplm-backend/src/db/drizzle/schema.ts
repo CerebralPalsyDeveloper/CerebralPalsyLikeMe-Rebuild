@@ -6,6 +6,7 @@ import { pgTable, uuid, decimal, text, timestamp, integer, pgEnum, varchar } fro
 export const users = pgTable('users', {
   id: varchar('id').primaryKey(),
   email: varchar('email').notNull().unique(),
+  password: varchar('password').notNull(),
   fullName: varchar('full_name'),
   createdAt: timestamp('created_at').defaultNow(),
   updatedAt: timestamp('updated_at').defaultNow()

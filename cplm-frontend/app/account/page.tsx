@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import useAppSelector from "@/store/hooks/useAppSelector";
 import { useRouter } from "next/navigation";
 import { useSaveCPUserInfoMutation, useGetCPUserInfoQuery } from "@/services/cpUserInfoApi";
-import { handleApiCall } from "@/utils/handleApiCall";
+
 import { toast } from "react-toastify";
 import HeaderContent from "@/components/ui/Header/Header";
 import FooterContent from "@/components/ui/Footer/Footer";
@@ -54,7 +54,7 @@ export default function AccountPage() {
     }
   }, [cpUserInfo]);
 
-  const handleSave = () => {
+  const handleSave = async () => {
     if (!canWalk || !troubleHands || !cpType || !canTalk || !canSee || !canHear || !needAssistance || !address) {
       setErrorMsg("Please answer all questions");
       setMessage("");
@@ -72,21 +72,17 @@ export default function AccountPage() {
       address,
     };
 
-    handleApiCall(
-      saveCPUserInfo,
-      [cpUserData],
-      (result) => {
-        setErrorMsg("");
-        setMessage("Answers saved successfully!");
-        toast.success("CP information saved successfully!");
-        // refetch(); // Not needed, RTK Query will update cache
-      },
-      (error) => {
-        setErrorMsg(error.message || "Failed to save answers");
-        setMessage("");
-        toast.error("Failed to save CP information");
-      }
-    );
+    try {
+      const result = await saveCPUserInfo(cpUserData).unwrap();
+      setErrorMsg("");
+      setMessage("Answers saved successfully!");
+      toast.success("CP information saved successfully!");
+      // refetch(); // Not needed, RTK Query will update cache
+    } catch (error: any) {
+      setErrorMsg(error?.data?.message || error?.message || "Failed to save answers");
+      setMessage("");
+      toast.error("Failed to save CP information");
+    }
   };
 
   // Don't render anything until hydrated to prevent hydration mismatch

@@ -16,7 +16,7 @@ import {
 
 import { useAppDispatch } from "@/store/hooks";
 import { setAuth } from "@/store/slices/authSlice";
-import { handleApiCall } from "@/utils/handleApiCall";
+
 import { styled } from "@mui/material/styles";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup, {
@@ -98,48 +98,42 @@ export default function Signup() {
   }
 
   const onSubmit = async (data: any) => {
-    handleApiCall(
-      registerUser,
-      [data],
-      (result) => {
-        // After successful registration, log the user in
-        handleApiCall(
-          login,
-          [data],
-          (userData) => {
-            console.log('Login after signup successful, userData received:', userData);
-            
-            if (!userData.accessToken) {
-              console.error('No access token received from server');
-              toast.error("Login failed: No token received");
-              return;
-            }
-            
-            // Store token directly in localStorage
-            localStorage.setItem('token', userData.accessToken);
-            localStorage.setItem('refreshToken', userData.refreshToken);
-            
-            toast.success("Account created successfully!");
-            dispatch(
-              setAuth({
-                token: userData.accessToken,
-                userType: "user",
-                isAuthenticated: true
-              })
-            );
-            router.push("/");
-          },
-          (error) => {
-            console.error('Login after signup error:', error);
-            toast.error("Login failed.");
-          }
-        );
-      },
-      (error) => {
-        console.error('Signup error:', error);
-        toast.error(error.message || "Signup failed.");
+    try {
+      // Register the user
+      const registerResult = await registerUser(data).unwrap();
+      console.log('Registration successful:', registerResult);
+      
+      // After successful registration, log the user in
+      const loginResult = await login({
+        email: data.email,
+        password: data.password
+      }).unwrap();
+      
+      console.log('Login after signup successful:', loginResult);
+      
+      if (!loginResult.accessToken) {
+        console.error('No access token received from server');
+        toast.error("Login failed: No token received");
+        return;
       }
-    );
+      
+      // Store token directly in localStorage
+      localStorage.setItem('token', loginResult.accessToken);
+      localStorage.setItem('refreshToken', loginResult.refreshToken);
+      
+      toast.success("Account created successfully!");
+      dispatch(
+        setAuth({
+          token: loginResult.accessToken,
+          userType: "user",
+          isAuthenticated: true
+        })
+      );
+      router.push("/");
+    } catch (error: any) {
+      console.error('Signup error:', error);
+      toast.error(error?.data?.message || error?.message || "Signup failed.");
+    }
   };
 
   // Inline styles for green card and centering
@@ -205,6 +199,25 @@ export default function Signup() {
           {...register("password")}
           error={!!errors.password}
           helperText={<ValidationError message={errors.password?.message} />}
+          sx={{ ...inputStyle, marginBottom: 2 }}
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <IconButton onClick={() => setShowPassword(!showPassword)}>
+                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            ),
+          }}
+        />
+        <TextField
+          fullWidth
+          variant="outlined"
+          placeholder="Confirm Password"
+          type={showPassword ? "text" : "password"}
+          {...register("confirmPassword")}
+          error={!!errors.confirmPassword}
+          helperText={<ValidationError message={errors.confirmPassword?.message} />}
           sx={{ ...inputStyle, marginBottom: 3 }}
           InputProps={{
             endAdornment: (
