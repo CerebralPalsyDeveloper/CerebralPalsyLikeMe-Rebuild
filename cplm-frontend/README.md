@@ -1,6 +1,6 @@
-# CP Like Me - Frontend
+# Cerebral Palsy Like Me - Rebuild - Frontend
 
-A Next.js-based React frontend application for CP Like Me, designed to help individuals with cerebral palsy find specialists and assistive devices through an intuitive and accessible interface.
+A Next.js-based React frontend application for Cerebral Palsy Like Me, designed to help individuals with cerebral palsy find specialists and assistive devices through an intuitive and accessible interface.
 
 ## 🚀 Features
 
